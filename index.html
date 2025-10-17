@@ -21,92 +21,323 @@
 
 <body class="bg-gradient-to-br from-gray-50 to-gray-200 text-gray-800 min-h-screen flex flex-col">
 
-    <!-- Hero / Header -->
-    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-            <div class="flex items-center space-x-2 space-x-reverse">
-                <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Logo"
-                    class="w-10 h-10 rounded-full shadow">
-            </div>
-            <nav class="hidden md:flex space-x-6 space-x-reverse text-gray-700">
-                <a href="#" class="hover:text-blue-600 transition">الصفحة الرئيسية</a>
-            </nav>
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center space-x-2 space-x-reverse">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="Logo" class="w-10 h-10 rounded-full shadow">
+        <span class="text-2xl font-extrabold text-blue-600">وليد إلكترُو سات</span>
+      </div>
+      <nav class="hidden md:flex space-x-6 space-x-reverse text-gray-700">
+        <a href="#" class="hover:text-blue-600 transition">الرئيسية</a>
+        <a href="#" class="hover:text-blue-600 transition">التطبيقات</a>
+        <a href="#" class="hover:text-blue-600 transition">اتصل بنا</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-16 bg-gradient-to-tr from-blue-600 to-indigo-700 text-white shadow-lg">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">تطبيقات مجانية للأندرويد</h1>
+    <p class="text-lg opacity-90 mb-6">اكتشف أحدث التطبيقات المجانية المتاحة للتحميل المباشر</p>
+    <a href="#apps" class="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">تصفح الآن</a>
+  </section>
+
+  <!-- Free APKs Section -->
+  <main id="apps" class="flex-grow max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-10 text-gray-700">تطبيقات مجانية</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+      <!-- Previous Apps -->
+      <!-- Downloader -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726831806.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726844064.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Downloader by AFTVnews</h3>
+          <p class="text-sm text-gray-600 mb-3">APK FREE</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
         </div>
-    </header>
+      </a>
 
-    <!-- Hero Section -->
-    <section class="text-center py-16 bg-gradient-to-tr from-blue-600 to-indigo-700 text-white shadow-lg">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">تطبيقات مجانية للأندرويد</h1>
-        <p class="text-lg opacity-90 mb-6">اكتشف أفضل التطبيقات المجانية التي يمكنك تحميلها مباشرةً</p>
-        <a href="#apps"
-            class="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">ابدأ
-            التصفح</a>
-    </section>
-
-    <!-- APK Cards Section -->
-    <main id="apps" class="flex-grow max-w-6xl mx-auto px-4 py-12">
-        <h2 class="text-3xl font-bold text-center mb-10 text-gray-700">تطبيقات مجانية</h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-                <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="APK Logo"
-                    class="w-full h-40 object-cover rounded-t-2xl">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2 text-blue-700">Downloader by AFTVnews</h3>
-                    <p class="text-gray-600 mb-4 text-sm">تطبيق تحميل الملفات بسهولة من الإنترنت على جهازك الأندرويد.
-                    </p>
-                    <a href="#"
-                        class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">تحميل
-                        التطبيق</a>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-                <img src="https://cdn-icons-png.flaticon.com/512/906/906349.png" alt="APK Logo"
-                    class="w-full h-40 object-cover rounded-t-2xl">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2 text-blue-700">File Commander</h3>
-                    <p class="text-gray-600 mb-4 text-sm">مدير ملفات قوي وسهل الاستخدام لتنظيم ملفاتك وصورك وفيديوهاتك.
-                    </p>
-                    <a href="#"
-                        class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">تحميل
-                        التطبيق</a>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-                <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="APK Logo"
-                    class="w-full h-40 object-cover rounded-t-2xl">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2 text-blue-700">Smart IPTV Player</h3>
-                    <p class="text-gray-600 mb-4 text-sm">شغّل قنوات IPTV المفضلة لديك بسهولة مع واجهة حديثة وبسيطة.</p>
-                    <a href="#"
-                        class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">تحميل
-                        التطبيق</a>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-                <img src="https://cdn-icons-png.flaticon.com/512/564/564445.png" alt="APK Logo"
-                    class="w-full h-40 object-cover rounded-t-2xl">
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2 text-blue-700">Clean Master</h3>
-                    <p class="text-gray-600 mb-4 text-sm">نظّف هاتفك من الملفات المؤقتة واحصل على أداء أسرع وأكثر سلاسة.
-                    </p>
-                    <a href="#"
-                        class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">تحميل
-                        التطبيق</a>
-                </div>
-            </div>
-
+      <!-- Hdo Box -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726832230.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726832230.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Hdo Box</h3>
+          <p class="text-sm text-gray-600 mb-3">APK FREE TV</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
         </div>
-    </main>
+      </a>
 
+      <!-- Hdo Box Mobile -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726832378.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726832378.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Hdo Box</h3>
+          <p class="text-sm text-gray-600 mb-3">APK FREE MOBILE</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Drama Player -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726832744.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726832744.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">DRAMA PLAYER</h3>
+          <p class="text-sm text-gray-600 mb-3">المشغل HBO</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- FlimPlus -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726834896.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726834896.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">FlimPlus</h3>
+          <p class="text-sm text-gray-600 mb-3">APK FREE</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Drama Live -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726835175.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726835175.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Drama Live</h3>
+          <p class="text-sm text-gray-600 mb-3">CODE Drama Live (232425)</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- ✅ NEW APPS ADDED BELOW -->
+
+      <!-- Yacine TV -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1756538415.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726835333.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Yacine TV</h3>
+          <p class="text-sm text-gray-600 mb-3">APK FREE</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- YTV Player -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1756538448.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726835460.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">YTV Player</h3>
+          <p class="text-sm text-gray-600 mb-3">المشغل YACINE TV</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- General TV -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726835639.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726835639.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">General TV</h3>
+          <p class="text-sm text-gray-600 mb-3">كود التفعيل | active code 3060</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- El Ahmed TV -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726835736.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726835736.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">El Ahmed TV</h3>
+          <p class="text-sm text-gray-600 mb-3">كود التفعيل (123123)</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- شعاع التلفاز -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726835795.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726835795.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">شعاع التلفاز</h3>
+          <p class="text-sm text-gray-600 mb-3">APK FREE</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Aptoide TV -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726836004.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726836004.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Aptoide TV</h3>
+          <p class="text-sm text-gray-600 mb-3">متاجر تنزيل التطبيقات بديلة جوجل بلاي</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+       <!-- Sideload Launcher -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726836085.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726836085.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Sideload Launcher</h3>
+          <p class="text-sm text-gray-600 mb-3">لانشرات لتغير واجهة التلفزيون</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Aya TV -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726836273.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726836273.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Aya TV</h3>
+          <p class="text-sm text-gray-600 mb-3">APK FREE</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- WIZ-VIDEO -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726836417.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726836417.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">WIZ-VIDEO</h3>
+          <p class="text-sm text-gray-600 mb-3">المشغل AYA TV</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Set Orientation -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726838483.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726838483.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Set Orientation</h3>
+          <p class="text-sm text-gray-600 mb-3">Set Orientation هو تطبيق بسيط يسمح لك بفرض صيغة العرض لتطبيقات أو ألعاب أخرى بين portrait و landscape.</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- EgyBest app -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726840117.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726840117.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">EgyBest app</h3>
+          <p class="text-sm text-gray-600 mb-3">تطبيق ايجي باست يحتوي على أكبر مكتبة من الأفلام والمسلسلات</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- HDFLIX -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726842360.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726842360.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">HDFLIX</h3>
+          <p class="text-sm text-gray-600 mb-3">HD FILX - Movies app for iOS, Android</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- SHEIKH|TV -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726842695.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726842695.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">SHEIKH|TV</h3>
+          <p class="text-sm text-gray-600 mb-3">الباقات والقنوات في برنامج Sheikh TV شيخ تيفي APK</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- PLAYER TV -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726842860.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726842860.png" classclass="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">PLAYER TV</h3>
+          <p class="text-sm text-gray-600 mb-3">المشغل Sheikh TV</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Mix Flix -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726843384.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726843384.webp" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">Mix Flix</h3>
+          <p class="text-sm text-gray-600 mb-3">مشاهدة جميع المباريات والأفلام والمسلسلات العربية والإنجليزية مترجمة إلى اللغة العربية.</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- SPEED PLAYER -->
+      <a href="https://walidelectrosatellite.pro/storage/assets/apk/1726843632.apk" target="_blank" class="fade-in bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="p-4">
+          <img src="https://walidelectrosatellite.pro/storage/assets/img/apk/1726843632.png" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-semibold text-blue-700 mb-2">SPEED PLAYER</h3>
+          <p class="text-sm text-gray-600 mb-3">المشغل MIXFLIX</p>
+          <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
+            <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
+            <span>1122 تحميل</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </main>
     <!-- Footer -->
     <footer class="bg-white border-t shadow-inner mt-12">
         <div class="max-w-6xl mx-auto text-center py-6 text-gray-600">
