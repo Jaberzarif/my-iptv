@@ -33,7 +33,8 @@
     </script>
 </head>
 
-<body class="bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col transition-all">
+<body
+    class="bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col transition-all">
 
     <!-- Header -->
     <header class="bg-white/80 dark:bg-gray-900/70 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all">
@@ -44,9 +45,32 @@
             </div>
 
             <!-- Navigation -->
-            <nav class="hidden md:flex space-x-6 space-x-reverse text-gray-700 dark:text-gray-200">
-                <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition">الرئيسية</a>
+            <nav class="hidden md:flex space-x-6 space-x-reverse text-gray-700 dark:text-gray-200 relative">
+            <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition">الرئيسية</a>
+            <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition">البث المباشر</a>
+
+            <!-- Dropdown: التصنيفات -->
+            <div class="relative group">
+                <button
+                class="flex items-center space-x-1 space-x-reverse hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none">
+                <span>التصنيفات</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 transition-transform group-hover:rotate-180"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div
+                class="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition">تطبيقات الأندرويد</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition">الألعاب</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition">الأدوات</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition">العروض المجانية</a>
+                </div>
+            </div>
             </nav>
+
 
             <!-- 🌙 / ☀️ Toggle Button -->
             <button id="themeToggle"
@@ -57,7 +81,8 @@
     </header>
 
     <!-- Hero Section -->
-  <section class="text-center py-16 bg-gradient-to-tr from-blue-600 to-indigo-700 dark:from-indigo-800 dark:to-blue-900 text-white shadow-lg transition-all">
+    <section
+        class="text-center py-16 bg-gradient-to-tr from-blue-600 to-indigo-700 dark:from-indigo-800 dark:to-blue-900 text-white shadow-lg transition-all">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-4">تطبيقات مجانية للأندرويد</h1>
         <p class="text-lg opacity-90 mb-6">اكتشف أحدث التطبيقات المجانية المتاحة للتحميل المباشر</p>
         <a href="#apps"
@@ -68,9 +93,9 @@
 
     <!-- Free APKs Section -->
     <main id="apps" class="flex-grow max-w-6xl mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold text-center mb-10 text-gray-700 dark:text-gray-200">تطبيقات مجانية</h2>
+        <h2 class="text-3xl font-bold text-center mb-10 text-gray-700 dark:text-gray-200">تطبيقات مجانية</h2>
 
-    <div id="appsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div id="appsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <!-- Aptoide TV -->
             <a href="apks/Aptoide_tv.apk" target="_blank"
                 class="fade-in bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
@@ -129,7 +154,8 @@
                 class="fade-in bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
                 <div class="p-4">
                     <img src="img/Downloader_by_AFTVnews.webp" class="w-full h-40 object-cover rounded-lg mb-3">
-                    <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Downloader by AFTVnews</h3>
+                    <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Downloader by AFTVnews
+                    </h3>
                     <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">APK FREE</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="img/download.png" width="16" class="ml-2">
@@ -302,7 +328,8 @@
                 <div class="p-4">
                     <img src="img/Mix_Flix.webp" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Mix Flix</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">مشاهدة جميع المباريات والأفلام والمسلسلات العربية والإنجليزية
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">مشاهدة جميع المباريات والأفلام والمسلسلات
+                        العربية والإنجليزية
                         مترجمة إلى اللغة العربية.</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -357,7 +384,8 @@
                 <div class="p-4">
                     <img src="img/Set_Orientation.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Set Orientation</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Set Orientation هو تطبيق بسيط يسمح لك بفرض صيغة العرض لتطبيقات
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Set Orientation هو تطبيق بسيط يسمح لك بفرض
+                        صيغة العرض لتطبيقات
                         أو ألعاب أخرى بين portrait و landscape.</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -372,7 +400,8 @@
                 <div class="p-4">
                     <img src="img/EgyBest_app.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">EgyBest app</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تطبيق ايجي باست يحتوي على أكبر مكتبة من الأفلام والمسلسلات</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تطبيق ايجي باست يحتوي على أكبر مكتبة من
+                        الأفلام والمسلسلات</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
                         <span>1122 تحميل</span>
@@ -400,7 +429,8 @@
                 <div class="p-4">
                     <img src="img/SHEIKH_TV.png" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">SHEIKH|TV</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">الباقات والقنوات في برنامج Sheikh TV شيخ تيفي APK</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">الباقات والقنوات في برنامج Sheikh TV شيخ
+                        تيفي APK</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
                         <span>1122 تحميل</span>
@@ -427,7 +457,8 @@
                 <a href="apks/Stream.apk" target="_blank">
                     <img src="img/Stream.png" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Stream</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">You can now watch all favorite TV shows on your Android TV
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">You can now watch all favorite TV shows on
+                        your Android TV
                         devices. The Stremio TV app let's you enjoy a movie night with ease.</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -441,7 +472,8 @@
                 <a href="apks/ALBASHA_TV.apk" target="_blank">
                     <img src="img/ALBASHA_TV.png" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">ALBASHA TV</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">albasha tv افضل تطبيق لمشاهدة القنوات والمباريات مجانا
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">albasha tv افضل تطبيق لمشاهدة القنوات
+                        والمباريات مجانا
                         للاندرويد</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -455,7 +487,8 @@
                 <a href="apks/Super_Live_TV.apk" target="_blank">
                     <img src="img/Super_Live_TV.png" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Super Live TV</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تطبيق لمشاهدة قنوات بين سبورت والقنوات العالميه بدون تقطيع
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تطبيق لمشاهدة قنوات بين سبورت والقنوات
+                        العالميه بدون تقطيع
                         FREE</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -482,7 +515,8 @@
                 <a href="apks/Action_TV.apk" target="_blank">
                     <img src="img/Action_TV.png" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Action TV</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">اكشن TV تطبيقك الشامل لمشاهدة وتحميل المسلسلات والأفلام
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">اكشن TV تطبيقك الشامل لمشاهدة وتحميل
+                        المسلسلات والأفلام
                         مجاناً! لجميع أجهزة الهواتف الذكية والتابلت والـ Smart TVs التي تعمل بنظام أندرويد. مسلسلات |
                         أفلام | برامج | مسرحيات أجنبي | تركي | هندي | كوري | مكسيكي | أنيمي</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
@@ -496,7 +530,8 @@
             <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-4">
                 <a href="apks/HiTV_Kdrama_HD.apk" target="_blank">
                     <img src="img/HiTV_Kdrama_HD.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
-                    <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">HiTV - دراما أفلام Kdrama HD</h3>
+                    <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">HiTV - دراما أفلام Kdrama
+                        HD</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Android TV -Fire TV - التلفزيون سمارت</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -509,8 +544,10 @@
             <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-4">
                 <a href="apks/HiTV_Kdrama_HD.apk" target="_blank">
                     <img src="img/HiTV_Kdrama_HD.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
-                    <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">HiTV - دراما أفلام Kdrama HD</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تحميل تطبيق هاي تي في HiTV الهواتف للاندرويد مجاناً</p>
+                    <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">HiTV - دراما أفلام Kdrama
+                        HD</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تحميل تطبيق هاي تي في HiTV الهواتف
+                        للاندرويد مجاناً</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
                         <span>1122 تحميل</span>
@@ -523,7 +560,8 @@
                 <a href="apks/OBG_TV.apk" target="_blank">
                     <img src="img/OBG_TV.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">OBG TV</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تحميل تطبيق OBG TV APK أخر إصدار 2024 لمشاهدة مباريات وقنوات
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تحميل تطبيق OBG TV APK أخر إصدار 2024
+                        لمشاهدة مباريات وقنوات
                         التلفاز للاندرويد</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -591,7 +629,8 @@
                 <a href="apks/Station_TV.apk" target="_blank">
                     <img src="img/Station_TV.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Station TV</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تحميل تطبيق وبرنامج Station TV للاندرويد ستيشن أخر إصدار
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تحميل تطبيق وبرنامج Station TV للاندرويد
+                        ستيشن أخر إصدار
                         وتحديث 2024 لمشاهدة القنوات الرياضية والترفيهية وغيرها من القنوات المتنوعة الرائعة تعمل بشكل
                         ممتاز.</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
@@ -606,7 +645,8 @@
                 <a href="apks/OnStream_SMART_TV.apk" target="_blank">
                     <img src="img/OnStream_SMART_TV.png" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">OnStream - SMART TV</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">OnStream - Free App for movies &amp; TV shows online in HD on
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">OnStream - Free App for movies &amp; TV
+                        shows online in HD on
                         any device</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -620,7 +660,8 @@
                 <a href="apks/OnStream_Smartphone.apk" target="_blank">
                     <img src="img/OnStream_Smartphone.png" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">OnStream - Smartphone</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">OnStream - Free App for movies &amp; TV shows online in HD on
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">OnStream - Free App for movies &amp; TV
+                        shows online in HD on
                         any device</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
@@ -634,7 +675,8 @@
                 <a href="apks/CloudStream.apk" target="_blank">
                     <img src="img/CloudStream.jpg" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">CloudStream</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تطبيق رائع يتيح للمستخدمين مشاهدة الأفلام والمسلسلات الأجنبية
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">تطبيق رائع يتيح للمستخدمين مشاهدة الأفلام
+                        والمسلسلات الأجنبية
                         مجانًا وبدون إعلانات مزعجة على مختلف الأجهزة التي تعمل بنظام الأندرويد بما فيها شاشات التلفزيون
                         سمارت و اجهزة Android tv box. إنه خيار رائع لمن يرغب في تجربة مشاهدة تلفزيونية ممتعة دون الحاجة
                         إلى الاشتراك في خدمات البحث عن العملاء.</p>
@@ -650,7 +692,8 @@
                 <a href="apks/Zerda_LIVE.apk" target="_blank">
                     <img src="img/Zerda_LIVE.webp" class="w-full h-40 object-cover rounded-lg mb-3">
                     <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-2-2">Zerda LIVE</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">كود تطبيق Zerda LIVE أو Url Zerda TV LIVE هو : 111222</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">كود تطبيق Zerda LIVE أو Url Zerda TV LIVE
+                        هو : 111222</p>
                     <div class="flex items-center justify-center bg-blue-600 text-white rounded-lg py-2">
                         <img src="https://walidelectrosatellite.pro/assets/img/download.png" width="16" class="ml-2">
                         <span>1122 تحميل</span>
@@ -667,7 +710,8 @@
         </div>
     </main>
     <!-- Footer -->
-    <footer class="bg-white border-t shadow-inner mt-12">
+    <footer
+        class="bg-white dark:bg-gray-900 text-center py-4 text-gray-600 dark:text-gray-300 border-t dark:border-gray-700">
         <div class="max-w-6xl mx-auto text-center py-6 text-gray-600">
             © 2025 جميع الحقوق محفوظة
             الموقع من تطوير <a class="text-blue-600" href="https://www.linkedin.com/in/jaber-zarif-3aa4b8114/"
@@ -720,16 +764,35 @@
                 function createButton(label, opts = {}) {
                     const btn = document.createElement('button');
                     btn.type = 'button';
-                    btn.className = 'px-3 py-1 rounded-md border bg-white text-gray-700 hover:bg-gray-100 transition';
-                    if (opts.active) {
-                        btn.className = 'px-3 py-1 rounded-md border bg-blue-600 text-white';
+
+                    // Base Tailwind classes (light + dark)
+                    btn.className = `
+                        px-3 py-1 rounded-md border 
+                        bg-white text-gray-700 
+                        hover:bg-gray-100 
+                        dark:bg-gray-800 dark:text-gray-200 
+                        dark:border-gray-600 dark:hover:bg-gray-700 
+                        transition
+                    `.trim();
+
+                                        // Active (selected) button style
+                                        if (opts.active) {
+                                            btn.className = `
+                        px-3 py-1 rounded-md border 
+                        bg-blue-600 text-white 
+                        dark:bg-blue-500 dark:text-white 
+                        transition
+                        `.trim();
                         btn.setAttribute('aria-current', 'page');
                     }
-                    btn.textContent = label;
+
+                    // Disabled state
                     if (opts.disabled) {
                         btn.disabled = true;
                         btn.className += ' opacity-50 cursor-not-allowed';
                     }
+
+                    btn.textContent = label;
                     return btn;
                 }
 
@@ -821,26 +884,26 @@
         })();
     </script>
 
-      <!-- JS: Theme Toggle -->
-  <script>
-    const toggleBtn = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const root = document.documentElement;
+    <!-- JS: Theme Toggle -->
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const root = document.documentElement;
 
-    // Load user preference
-    if (localStorage.getItem('theme') === 'dark' ||
-      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      root.classList.add('dark');
-      themeIcon.textContent = '☀️';
-    }
+        // Load user preference
+        if (localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            root.classList.add('dark');
+            themeIcon.textContent = '☀️';
+        }
 
-    toggleBtn.addEventListener('click', () => {
-      root.classList.toggle('dark');
-      const isDark = root.classList.contains('dark');
-      themeIcon.textContent = isDark ? '☀️' : '🌙';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-  </script>
+        toggleBtn.addEventListener('click', () => {
+            root.classList.toggle('dark');
+            const isDark = root.classList.contains('dark');
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
 
 </body>
 
