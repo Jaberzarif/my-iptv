@@ -70,9 +70,55 @@
         </div>
     </header>
 
-    <div class="max-w-6xl mx-auto px-4 py-8 flex-grow">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex-grow">
         <h2 class="text-3xl font-bold mb-6 text-center">مباريات كرة القدم اليوم</h2>
         
+        <!-- Competition Filter -->
+        <div class="mb-6 bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+            <h3 class="text-lg font-bold mb-3">تصفية حسب الدوري:</h3>
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterLeague('all')" class="league-filter px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition text-sm" data-league="all">
+                    الكل 🌍
+                </button>
+                <button onclick="filterLeague('WC')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="WC">
+                    كأس العالم 🏆
+                </button>
+                <button onclick="filterLeague('CL')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="CL">
+                    دوري الأبطال ⭐
+                </button>
+                <button onclick="filterLeague('PL')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="PL">
+                    الدوري الإنجليزي 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+                </button>
+                <button onclick="filterLeague('PD')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="PD">
+                    الدوري الإسباني 🇪🇸
+                </button>
+                <button onclick="filterLeague('SA')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="SA">
+                    الدوري الإيطالي 🇮🇹
+                </button>
+                <button onclick="filterLeague('BL1')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="BL1">
+                    الدوري الألماني 🇩🇪
+                </button>
+                <button onclick="filterLeague('FL1')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="FL1">
+                    الدوري الفرنسي 🇫🇷
+                </button>
+                <button onclick="filterLeague('DED')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="DED">
+                    الدوري الهولندي 🇳🇱
+                </button>
+                <button onclick="filterLeague('PPL')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="PPL">
+                    الدوري البرتغالي 🇵🇹
+                </button>
+                <button onclick="filterLeague('BSA')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="BSA">
+                    الدوري البرازيلي 🇧🇷
+                </button>
+                <button onclick="filterLeague('ELC')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="ELC">
+                    الدرجة الأولى الإنجليزي 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+                </button>
+                <button onclick="filterLeague('EC')" class="league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm" data-league="EC">
+                    بطولة أوروبا 🇪🇺
+                </button>
+            </div>
+        </div>
+
         <!-- Loading Indicator -->
         <div id="loading" class="text-center py-8">
             <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -82,18 +128,18 @@
         <!-- Matches Container -->
         <div id="matchesContainer" class="hidden">
             <div id="liveMatches" class="mb-8">
-                <h3 class="text-xl font-bold mb-4 text-red-600 dark:text-red-400">🔴 مباريات مباشرة</h3>
-                <div id="liveMatchesList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <h3 class="text-xl font-bold mb-4 text-red-600 dark:text-red-400">🔴 مباريات مباشرة (<span id="liveCount">0</span>)</h3>
+                <div id="liveMatchesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
 
             <div id="upcomingMatches">
-                <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">📅 مباريات قادمة</h3>
-                <div id="upcomingMatchesList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">📅 مباريات قادمة (<span id="upcomingCount">0</span>)</h3>
+                <div id="upcomingMatchesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
 
             <div id="finishedMatches" class="mt-8">
-                <h3 class="text-xl font-bold mb-4 text-gray-600 dark:text-gray-400">✓ مباريات منتهية</h3>
-                <div id="finishedMatchesList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <h3 class="text-xl font-bold mb-4 text-gray-600 dark:text-gray-400">✓ مباريات منتهية (<span id="finishedCount">0</span>)</h3>
+                <div id="finishedMatchesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
         </div>
 
@@ -113,11 +159,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script>
-        const apiToken = 'c3c0d056cc0b49a4945da165125df5d9';
+        const API_TOKEN = 'c3c0d056cc0b49a4945da165125df5d9';
         
         const streamMap = {
             // Add your stream URLs here: "matchId": "https://stream-url.m3u8"
         };
+
+        // Competition codes mapping
+        const competitions = {
+            'WC': { name: 'كأس العالم FIFA', code: 'WC' },
+            'CL': { name: 'دوري أبطال أوروبا', code: 'CL' },
+            'BL1': { name: 'الدوري الألماني', code: 'BL1' },
+            'DED': { name: 'الدوري الهولندي', code: 'DED' },
+            'BSA': { name: 'الدوري البرازيلي', code: 'BSA' },
+            'PD': { name: 'الدوري الإسباني', code: 'PD' },
+            'FL1': { name: 'الدوري الفرنسي', code: 'FL1' },
+            'ELC': { name: 'الدرجة الأولى الإنجليزي', code: 'ELC' },
+            'PPL': { name: 'الدوري البرتغالي', code: 'PPL' },
+            'EC': { name: 'بطولة أوروبا', code: 'EC' },
+            'SA': { name: 'الدوري الإيطالي', code: 'SA' },
+            'PL': { name: 'الدوري الإنجليزي الممتاز', code: 'PL' }
+        };
+
+        let allMatches = [];
+        let currentFilter = 'all';
 
         function formatTime(dateString) {
             const date = new Date(dateString);
@@ -128,58 +193,128 @@
             });
         }
 
+        function getCompetitionName(code) {
+            return competitions[code]?.name || code;
+        }
+
         function createMatchCard(match) {
-            const home = match.homeTeam;
-            const away = match.awayTeam;
-            const league = match.competition.name;
-            const score = match.score.fullTime || match.score.halftime || { home: null, away: null };
+            const home = match.homeTeam.name;
+            const away = match.awayTeam.name;
+            const homeCrest = match.homeTeam.crest;
+            const awayCrest = match.awayTeam.crest;
+            const league = getCompetitionName(match.competition.code);
+            const homeScore = match.score.fullTime.home !== null ? match.score.fullTime.home : '-';
+            const awayScore = match.score.fullTime.away !== null ? match.score.fullTime.away : '-';
             const time = formatTime(match.utcDate);
             const status = match.status;
 
             let statusBadge = '';
             let statusText = '';
             
-            if (status === 'IN_PLAY' || status === 'PAUSED') {
-                statusBadge = 'bg-red-600 text-white';
+            if (['IN_PLAY', 'PAUSED'].includes(status)) {
+                statusBadge = 'bg-red-600 text-white animate-pulse';
                 statusText = 'مباشر 🔴';
             } else if (status === 'FINISHED') {
                 statusBadge = 'bg-gray-600 text-white';
                 statusText = 'انتهت';
-            } else if (status === 'TIMED' || status === 'SCHEDULED') {
+            } else {
                 statusBadge = 'bg-blue-600 text-white';
                 statusText = time;
             }
 
-            const scoreDisplay = (score.home !== null && score.away !== null) 
-                ? `<span class="text-2xl font-bold">${score.home} - ${score.away}</span>`
-                : `<span class="text-sm text-gray-500 dark:text-gray-400">لم تبدأ</span>`;
+            const scoreDisplay = (match.score.fullTime.home !== null && match.score.fullTime.away !== null) 
+                ? `<span class="text-2xl font-bold">${homeScore} - ${awayScore}</span>`
+                : `<span class="text-sm text-gray-500 dark:text-gray-400">${time}</span>`;
 
             return `
-                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition cursor-pointer"
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition cursor-pointer" data-competition="${match.competition.code}"
                      onclick="playStream('${match.id}')">
                     <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center flex-1">
-                            <img src="https://crests.football-data.org/${home.id}.svg" 
-                                 alt="${home.name}" 
-                                 class="w-10 h-10 ml-2"
+                        <div class="flex items-center flex-1 min-w-0">
+                            <img src="${homeCrest}" 
+                                 alt="${home}" 
+                                 class="w-10 h-10 ml-2 object-contain flex-shrink-0"
                                  onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ccc%22/%3E%3C/svg%3E'">
-                            <span class="font-semibold text-sm">${home.name}</span>
+                            <span class="font-semibold text-sm truncate">${home}</span>
                         </div>
                         ${scoreDisplay}
-                        <div class="flex items-center flex-1 justify-end">
-                            <span class="font-semibold text-sm">${away.name}</span>
-                            <img src="https://crests.football-data.org/${away.id}.svg" 
-                                 alt="${away.name}" 
-                                 class="w-10 h-10 mr-2"
+                        <div class="flex items-center flex-1 justify-end min-w-0">
+                            <span class="font-semibold text-sm truncate">${away}</span>
+                            <img src="${awayCrest}" 
+                                 alt="${away}" 
+                                 class="w-10 h-10 mr-2 object-contain flex-shrink-0"
                                  onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ccc%22/%3E%3C/svg%3E'">
                         </div>
                     </div>
                     <div class="flex justify-between items-center mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-                        <p class="text-xs text-gray-500 dark:text-gray-400">${league}</p>
-                        <span class="${statusBadge} text-xs px-2 py-1 rounded">${statusText}</span>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 truncate">${league}</p>
+                        <span class="${statusBadge} text-xs px-2 py-1 rounded flex-shrink-0">${statusText}</span>
                     </div>
                 </div>
             `;
+        }
+
+        function filterLeague(leagueCode) {
+            currentFilter = leagueCode;
+            
+            // Update button styles
+            document.querySelectorAll('.league-filter').forEach(btn => {
+                if (btn.dataset.league === leagueCode) {
+                    btn.className = 'league-filter px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition text-sm';
+                } else {
+                    btn.className = 'league-filter px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm';
+                }
+            });
+            
+            displayMatches();
+        }
+
+        function displayMatches() {
+            const matches = currentFilter === 'all' 
+                ? allMatches 
+                : allMatches.filter(m => m.competition.code === currentFilter);
+
+            // Categorize matches
+            const liveMatches = matches.filter(m => ['IN_PLAY', 'PAUSED'].includes(m.status));
+            const upcomingMatches = matches.filter(m => ['TIMED', 'SCHEDULED'].includes(m.status));
+            const finishedMatches = matches.filter(m => m.status === 'FINISHED');
+
+            // Display live matches
+            const liveSection = document.getElementById('liveMatches');
+            const liveList = document.getElementById('liveMatchesList');
+            const liveCount = document.getElementById('liveCount');
+            liveCount.textContent = liveMatches.length;
+            
+            if (liveMatches.length > 0) {
+                liveList.innerHTML = liveMatches.map(createMatchCard).join('');
+                liveSection.classList.remove('hidden');
+            } else {
+                liveSection.classList.add('hidden');
+            }
+
+            // Display upcoming matches
+            const upcomingList = document.getElementById('upcomingMatchesList');
+            const upcomingCount = document.getElementById('upcomingCount');
+            upcomingCount.textContent = upcomingMatches.length;
+            
+            if (upcomingMatches.length > 0) {
+                upcomingList.innerHTML = upcomingMatches.map(createMatchCard).join('');
+            } else {
+                upcomingList.innerHTML = '<p class="text-gray-500 dark:text-gray-400 col-span-full text-center py-4">لا توجد مباريات قادمة</p>';
+            }
+
+            // Display finished matches
+            const finishedSection = document.getElementById('finishedMatches');
+            const finishedList = document.getElementById('finishedMatchesList');
+            const finishedCount = document.getElementById('finishedCount');
+            finishedCount.textContent = finishedMatches.length;
+            
+            if (finishedMatches.length > 0) {
+                finishedList.innerHTML = finishedMatches.map(createMatchCard).join('');
+                finishedSection.classList.remove('hidden');
+            } else {
+                finishedSection.classList.add('hidden');
+            }
         }
 
         async function loadMatches() {
@@ -193,8 +328,10 @@
                 errorMsg.classList.add('hidden');
 
                 const today = new Date().toISOString().split('T')[0];
-                const response = await fetch(`https://api.football-data.org/v4/matches?dateFrom=${today}&dateTo=${today}`, {
-                    headers: { 'X-Auth-Token': apiToken }
+                const competitionCodes = Object.keys(competitions).join(',');
+                
+                const response = await fetch(`https://api.football-data.org/v4/matches?competitions=${competitionCodes}&dateFrom=${today}&dateTo=${today}`, {
+                    headers: { 'X-Auth-Token': API_TOKEN }
                 });
 
                 if (!response.ok) {
@@ -202,54 +339,22 @@
                 }
 
                 const data = await response.json();
-                const matches = data.matches;
+                allMatches = data.matches || [];
 
-                if (!matches || matches.length === 0) {
+                if (allMatches.length === 0) {
                     errorMsg.querySelector('p').textContent = 'لا توجد مباريات اليوم';
                     errorMsg.classList.remove('hidden');
                     loading.classList.add('hidden');
                     return;
                 }
 
-                // Categorize matches
-                const liveMatches = matches.filter(m => m.status === 'IN_PLAY' || m.status === 'PAUSED');
-                const upcomingMatches = matches.filter(m => m.status === 'TIMED' || m.status === 'SCHEDULED');
-                const finishedMatches = matches.filter(m => m.status === 'FINISHED');
-
-                // Display live matches
-                const liveSection = document.getElementById('liveMatches');
-                const liveList = document.getElementById('liveMatchesList');
-                if (liveMatches.length > 0) {
-                    liveList.innerHTML = liveMatches.map(createMatchCard).join('');
-                    liveSection.classList.remove('hidden');
-                } else {
-                    liveSection.classList.add('hidden');
-                }
-
-                // Display upcoming matches
-                const upcomingList = document.getElementById('upcomingMatchesList');
-                if (upcomingMatches.length > 0) {
-                    upcomingList.innerHTML = upcomingMatches.map(createMatchCard).join('');
-                } else {
-                    upcomingList.innerHTML = '<p class="text-gray-500 dark:text-gray-400">لا توجد مباريات قادمة</p>';
-                }
-
-                // Display finished matches
-                const finishedSection = document.getElementById('finishedMatches');
-                const finishedList = document.getElementById('finishedMatchesList');
-                if (finishedMatches.length > 0) {
-                    finishedList.innerHTML = finishedMatches.map(createMatchCard).join('');
-                    finishedSection.classList.remove('hidden');
-                } else {
-                    finishedSection.classList.add('hidden');
-                }
-
                 loading.classList.add('hidden');
                 container.classList.remove('hidden');
+                displayMatches();
 
             } catch (error) {
                 console.error('Error loading matches:', error);
-                errorMsg.querySelector('p').textContent = `حدث خطأ: ${error.message}. تأكد من صحة API Token`;
+                errorMsg.querySelector('p').textContent = `حدث خطأ: ${error.message}`;
                 errorMsg.classList.remove('hidden');
                 loading.classList.add('hidden');
             }
