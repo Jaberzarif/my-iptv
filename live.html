@@ -107,7 +107,8 @@
         <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
         <script>
             const apiKey = '120f22213423da8a2fe5e8b5fd4c6ac7';
-            const leagueIds = [39, 140, 78, 79];
+            // Spain, Premier League, Italy, Germany, Tunisia
+            const leagueIds = [140, 39, 135, 78, 160];
 
             const streamMap = {
                 // "fixtureId": "https://yourstream.com/match.m3u8"
@@ -122,10 +123,10 @@
                     const matches = data.response;
                     const container = document.getElementById('matchesContainer');
 
-                    // Filter only live matches (status.short starts with 1H, 2H, ET)
+                    // Filter only live matches from selected leagues
                     const liveMatches = matches.filter(m => {
                         const status = m.fixture.status.short;
-                        return status === '1H' || status === '2H' || status === 'ET';
+                        return (status === '1H' || status === '2H' || status === 'ET') && leagueIds.includes(m.league.id);
                     });
 
                     if (!liveMatches.length) {
@@ -141,26 +142,26 @@
                         const time = new Date(m.fixture.date).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
 
                         return `
-                        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
-                            onclick="playStream('${m.fixture.id}')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onclick="playStream('${m.fixture.id}')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
                             <img src="${home.logo}" alt="${home.name}" class="w-10 h-10 ml-2">
                             <span class="font-semibold">${home.name}</span>
-                            </div>
-                            <span class="mx-2">-</span>
-                            <div class="flex items-center">
+                        </div>
+                        <span class="mx-2">-</span>
+                        <div class="flex items-center">
                             <img src="${away.logo}" alt="${away.name}" class="w-10 h-10 ml-2">
                             <span class="font-semibold">${away.name}</span>
-                            </div>
                         </div>
-                        <div class="flex justify-between items-center mt-2">
-                            <p class="text-sm text-gray-500 dark:text-gray-300">${league}</p>
-                            <span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>
-                        </div>
-                        <p class="text-sm text-blue-600 dark:text-blue-400 mt-1">${time}</p>
-                        </div>
-                        `;
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <p class="text-sm text-gray-500 dark:text-gray-300">${league}</p>
+                        <span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>
+                    </div>
+                    <p class="text-sm text-blue-600 dark:text-blue-400 mt-1">${time}</p>
+                </div>
+                `;
                     }).join('');
                 } catch (err) {
                     console.error(err);
@@ -198,6 +199,7 @@
             loadMatches();
             setInterval(loadMatches, 5 * 60 * 1000); // Refresh every 5 minutes
         </script>
+
         <!-- Footer -->
         <footer
             class="bg-white dark:bg-gray-900 text-center py-4 text-gray-600 dark:text-gray-300 border-t dark:border-gray-700">
