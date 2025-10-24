@@ -1,1 +1,1 @@
-# my-iptv
+# egales-apps
