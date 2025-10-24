@@ -114,7 +114,7 @@
             };
 
             async function loadMatches() {
-                const url = `https://v3.football.api-sports.io/fixtures?live=all&league=${leagueIds.join(',')}`;
+                const url = `https://v3.football.api-sports.io/fixtures?live=all`;
 
                 try {
                     const res = await fetch(url, { headers: { "x-apisports-key": apiKey } });
