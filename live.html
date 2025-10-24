@@ -88,9 +88,7 @@
 
     <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-all">
         <div class="max-w-4xl mx-auto px-4 py-8">
-            <h2 class="text-2xl font-bold mb-4 text-center">مباريات الكبار المباشرة</h2>
-        </div>
-        <div class="max-w-4xl mx-auto px-4 py-8">
+            <h2 class="text-2xl font-bold mb-4 text-center">مباريات الكبار اليوم</h2>
             <div id="matchesContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
 
             <!-- Video Modal / Player -->
@@ -102,32 +100,28 @@
             </div>
         </div>
 
-        </div>
-
         <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
         <script>
-            const apiKey = '120f22213423da8a2fe5e8b5fd4c6ac7';
-            // Spain, Premier League, Italy, Germany, Tunisia
-            const leagueIds = [140, 39, 135, 78, 160];
+            const apiToken = 'c3c0d056cc0b49a4945da165125df5d9';
+            const leagueCodes = ['PL', 'PD', 'SA', 'BL1', 'TUN1']; // Premier League, La Liga, Serie A, Bundesliga, Tunisian League
 
             const streamMap = {
-                // "fixtureId": "https://yourstream.com/match.m3u8"
+                // Example: "matchId": "https://yourstream.com/match1.m3u8"
             };
 
             async function loadMatches() {
-                const url = `https://v3.football.api-sports.io/fixtures?live=all`;
-
                 try {
-                    const res = await fetch(url, { headers: { "x-apisports-key": apiKey } });
+                    const res = await fetch('https://api.football-data.org/v4/matches', {
+                        headers: { 'X-Auth-Token': apiToken }
+                    });
                     const data = await res.json();
-                    const matches = data.response;
+                    const matches = data.matches;
                     const container = document.getElementById('matchesContainer');
 
-                    // Filter only live matches from selected leagues
-                    const liveMatches = matches.filter(m => {
-                        const status = m.fixture.status.short;
-                        return (status === '1H' || status === '2H' || status === 'ET') && leagueIds.includes(m.league.id);
-                    });
+                    const liveMatches = matches.filter(m =>
+                        leagueCodes.includes(m.competition.code) &&
+                        ['LIVE', 'IN_PLAY', 'PAUSED'].includes(m.status)
+                    );
 
                     if (!liveMatches.length) {
                         container.innerHTML = `<p class="text-center text-gray-500 dark:text-gray-400 mx-auto">لا توجد مباريات مباشرة حالياً.</p>`;
@@ -135,34 +129,35 @@
                     }
 
                     container.innerHTML = liveMatches.map(m => {
-                        const home = m.teams.home;
-                        const away = m.teams.away;
-                        const league = m.league.name;
-                        const status = m.fixture.status.short;
-                        const time = new Date(m.fixture.date).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+                        const home = m.homeTeam;
+                        const away = m.awayTeam;
+                        const league = m.competition.name;
+                        const score = m.score.fullTime || { home: 0, away: 0 };
+                        const time = new Date(m.utcDate).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
 
                         return `
-                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
-                    onclick="playStream('${m.fixture.id}')">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <img src="${home.logo}" alt="${home.name}" class="w-10 h-10 ml-2">
-                            <span class="font-semibold">${home.name}</span>
-                        </div>
-                        <span class="mx-2">-</span>
-                        <div class="flex items-center">
-                            <img src="${away.logo}" alt="${away.name}" class="w-10 h-10 ml-2">
-                            <span class="font-semibold">${away.name}</span>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center mt-2">
-                        <p class="text-sm text-gray-500 dark:text-gray-300">${league}</p>
-                        <span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>
-                    </div>
-                    <p class="text-sm text-blue-600 dark:text-blue-400 mt-1">${time}</p>
+            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+                 onclick="playStream('${m.id}')">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <img src="https://crests.football-data.org/${home.id}.svg" alt="${home.name}" class="w-10 h-10 ml-2">
+                  <span class="font-semibold">${home.name}</span>
                 </div>
-                `;
+                <span class="mx-2">-</span>
+                <div class="flex items-center">
+                  <img src="https://crests.football-data.org/${away.id}.svg" alt="${away.name}" class="w-10 h-10 ml-2">
+                  <span class="font-semibold">${away.name}</span>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-2">
+                <p class="text-sm text-gray-500 dark:text-gray-300">${league}</p>
+                <span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>
+              </div>
+              <p class="text-sm text-blue-600 dark:text-blue-400 mt-1">${time}</p>
+            </div>
+          `;
                     }).join('');
+
                 } catch (err) {
                     console.error(err);
                     document.getElementById('matchesContainer').innerHTML =
@@ -170,8 +165,8 @@
                 }
             }
 
-            function playStream(fixtureId) {
-                const url = streamMap[fixtureId];
+            function playStream(matchId) {
+                const url = streamMap[matchId];
                 if (!url) {
                     alert('رابط البث غير متوفر لهذه المباراة.');
                     return;
@@ -197,9 +192,29 @@
             });
 
             loadMatches();
-            setInterval(loadMatches, 5 * 60 * 1000); // Refresh every 5 minutes
+            setInterval(loadMatches, 5 * 60 * 1000);
         </script>
 
+        <!-- JS: Theme Toggle -->
+        <script>
+            const toggleBtn = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const root = document.documentElement;
+
+            // Load user preference
+            if (localStorage.getItem('theme') === 'dark' ||
+                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                root.classList.add('dark');
+                themeIcon.textContent = '☀️';
+            }
+
+            toggleBtn.addEventListener('click', () => {
+                root.classList.toggle('dark');
+                const isDark = root.classList.contains('dark');
+                themeIcon.textContent = isDark ? '☀️' : '🌙';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        </script>
         <!-- Footer -->
         <footer
             class="bg-white dark:bg-gray-900 text-center py-4 text-gray-600 dark:text-gray-300 border-t dark:border-gray-700">
@@ -211,31 +226,16 @@
         </footer>
     </body>
 
+</body>
 
 
 
 
 
-    <!-- JS: Theme Toggle -->
-    <script>
-        const toggleBtn = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const root = document.documentElement;
 
-        // Load user preference
-        if (localStorage.getItem('theme') === 'dark' ||
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            root.classList.add('dark');
-            themeIcon.textContent = '☀️';
-        }
 
-        toggleBtn.addEventListener('click', () => {
-            root.classList.toggle('dark');
-            const isDark = root.classList.contains('dark');
-            themeIcon.textContent = isDark ? '☀️' : '🌙';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-    </script>
+
+
 
 </body>
 
