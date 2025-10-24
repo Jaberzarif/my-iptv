@@ -45,7 +45,7 @@
 
             <!-- Navigation -->
             <nav class="hidden md:flex space-x-6 space-x-reverse text-gray-700 dark:text-gray-200 relative">
-                <a href="https://jaberzarif.github.io/eagles-apps/live.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">الرئيسية</a>
+                <a href="/eagles-apps" class="hover:text-blue-600 dark:hover:text-blue-400 transition">الرئيسية</a>
                 <a href="live.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">البث المباشر</a>
 
                 <!-- Dropdown: التصنيفات -->
@@ -84,52 +84,59 @@
     </header>
 
 
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-all">
 
- <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script>
-    // ⚙️ Replace with your API key from https://www.api-football.com/
-    const apiKey = '120f22213423da8a2fe5e8b5fd4c6ac7';
-    const leagueIds = [39, 140, 78, 79]; // Premier League & La Liga
 
-    // IPTV streams (if you have them)
-    const streamMap = {
-      // Example: "fixtureId": "https://yourstream.com/match1.m3u8"
-    };
+    <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-all">
+        <div class="max-w-4xl mx-auto px-4 py-8">
+            <h2 class="text-2xl font-bold mb-4 text-center">مباريات الكبار المباشرة</h2>
+            <div id="matchesContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
 
-    async function loadMatches() {
-      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-      const url = `https://v3.football.api-sports.io/fixtures?date=${today}&league=${leagueIds.join(',')}&season=2025`;
+            <!-- Video Modal / Player -->
+            <div id="playerModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden max-w-2xl w-full">
+                    <video id="liveVideo" controls autoplay class="w-full h-auto"></video>
+                    <button id="closePlayer" class="px-4 py-2 bg-red-600 text-white w-full">إغلاق</button>
+                </div>
+            </div>
+        </div>
 
-      try {
-        const res = await fetch(url, {
-          headers: { "x-apisports-key": apiKey }
-        });
-        const data = await res.json();
-        const matches = data.response;
-        const container = document.getElementById('matchesContainer');
+        <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+        <script>
+            const apiKey = '120f22213423da8a2fe5e8b5fd4c6ac7';
+            const leagueIds = [39, 140]; // Premier League & La Liga
 
-        if (!matches.length) {
-          container.innerHTML = `<p class="text-center text-gray-500 dark:text-gray-400">لا توجد مباريات اليوم.</p>`;
-          return;
-        }
+            const streamMap = {
+                // "fixtureId": "https://yourstream.com/match.m3u8"
+            };
 
-        container.innerHTML = matches.map(m => {
-          const home = m.teams.home;
-          const away = m.teams.away;
-          const league = m.league.name;
-          const status = m.fixture.status.short;
-          const time = new Date(m.fixture.date).toLocaleTimeString('ar-EG', {
-            hour: '2-digit',
-            minute: '2-digit'
-          });
+            async function loadMatches() {
+                const url = `https://v3.football.api-sports.io/fixtures?live=all&league=${leagueIds.join(',')}`;
 
-          // Highlight live matches
-          const liveBadge = status === '1H' || status === '2H' || status === 'ET'
-            ? `<span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>`
-            : '';
+                try {
+                    const res = await fetch(url, { headers: { "x-apisports-key": apiKey } });
+                    const data = await res.json();
+                    const matches = data.response;
+                    const container = document.getElementById('matchesContainer');
 
-          return `
+                    // Filter only live matches (status.short starts with 1H, 2H, ET)
+                    const liveMatches = matches.filter(m => {
+                        const status = m.fixture.status.short;
+                        return status === '1H' || status === '2H' || status === 'ET';
+                    });
+
+                    if (!liveMatches.length) {
+                        container.innerHTML = `<p class="text-center text-gray-500 dark:text-gray-400">لا توجد مباريات مباشرة حالياً.</p>`;
+                        return;
+                    }
+
+                    container.innerHTML = liveMatches.map(m => {
+                        const home = m.teams.home;
+                        const away = m.teams.away;
+                        const league = m.league.name;
+                        const status = m.fixture.status.short;
+                        const time = new Date(m.fixture.date).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+
+                        return `
             <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
                  onclick="playStream('${m.fixture.id}')">
               <div class="flex items-center justify-between">
@@ -145,61 +152,62 @@
               </div>
               <div class="flex justify-between items-center mt-2">
                 <p class="text-sm text-gray-500 dark:text-gray-300">${league}</p>
-                ${liveBadge}
+                <span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>
               </div>
               <p class="text-sm text-blue-600 dark:text-blue-400 mt-1">${time}</p>
             </div>
           `;
-        }).join('');
-      } catch (err) {
-        console.error(err);
-        document.getElementById('matchesContainer').innerHTML =
-          `<p class="text-center text-red-500">حدث خطأ أثناء جلب البيانات.</p>`;
-      }
-    }
+                    }).join('');
+                } catch (err) {
+                    console.error(err);
+                    document.getElementById('matchesContainer').innerHTML =
+                        `<p class="text-center text-red-500">حدث خطأ أثناء جلب البيانات.</p>`;
+                }
+            }
 
-    function playStream(fixtureId) {
-      const url = streamMap[fixtureId];
-      if (!url) {
-        alert('رابط البث غير متوفر لهذه المباراة.');
-        return;
-      }
+            function playStream(fixtureId) {
+                const url = streamMap[fixtureId];
+                if (!url) {
+                    alert('رابط البث غير متوفر لهذه المباراة.');
+                    return;
+                }
 
-      const video = document.getElementById('liveVideo');
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = url;
-      }
+                const video = document.getElementById('liveVideo');
+                if (Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(url);
+                    hls.attachMedia(video);
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = url;
+                }
 
-      document.getElementById('playerModal').classList.remove('hidden');
-    }
+                document.getElementById('playerModal').classList.remove('hidden');
+            }
 
-    document.getElementById('closePlayer').addEventListener('click', () => {
-      document.getElementById('playerModal').classList.add('hidden');
-      const video = document.getElementById('liveVideo');
-      video.pause();
-      video.src = '';
-    });
+            document.getElementById('closePlayer').addEventListener('click', () => {
+                document.getElementById('playerModal').classList.add('hidden');
+                const video = document.getElementById('liveVideo');
+                video.pause();
+                video.src = '';
+            });
 
-    // Initial load + auto-refresh every 5 minutes
-    loadMatches();
-    setInterval(loadMatches, 5 * 60 * 1000);
-  </script>
+            loadMatches();
+            setInterval(loadMatches, 5 * 60 * 1000); // Refresh every 5 minutes
+        </script>
+        <!-- Footer -->
+        <footer
+            class="bg-white dark:bg-gray-900 text-center py-4 text-gray-600 dark:text-gray-300 border-t dark:border-gray-700">
+            <div class="max-w-6xl mx-auto text-center py-6 text-gray-600">
+                © 2025 جميع الحقوق محفوظة
+                الموقع من تطوير <a class="text-blue-600" href="https://www.linkedin.com/in/jaber-zarif-3aa4b8114/"
+                    target="_blank">جابر زريف</a>
+            </div>
+        </footer>
+    </body>
 
-</body>
 
-    <!-- Footer -->
-    <footer
-        class="bg-white dark:bg-gray-900 text-center py-4 text-gray-600 dark:text-gray-300 border-t dark:border-gray-700">
-        <div class="max-w-6xl mx-auto text-center py-6 text-gray-600">
-            © 2025 جميع الحقوق محفوظة
-            الموقع من تطوير <a class="text-blue-600" href="https://www.linkedin.com/in/jaber-zarif-3aa4b8114/"
-                target="_blank">جابر زريف</a>
-        </div>
-    </footer>
+
+
 
 
     <!-- JS: Theme Toggle -->
