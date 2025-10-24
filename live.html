@@ -89,6 +89,8 @@
     <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-all">
         <div class="max-w-4xl mx-auto px-4 py-8">
             <h2 class="text-2xl font-bold mb-4 text-center">مباريات الكبار المباشرة</h2>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 py-8">
             <div id="matchesContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
 
             <!-- Video Modal / Player -->
@@ -100,10 +102,12 @@
             </div>
         </div>
 
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
         <script>
             const apiKey = '120f22213423da8a2fe5e8b5fd4c6ac7';
-            const leagueIds = [39, 140]; // Premier League & La Liga
+            const leagueIds = [39, 140, 78, 79];
 
             const streamMap = {
                 // "fixtureId": "https://yourstream.com/match.m3u8"
@@ -125,7 +129,7 @@
                     });
 
                     if (!liveMatches.length) {
-                        container.innerHTML = `<p class="text-center text-gray-500 dark:text-gray-400">لا توجد مباريات مباشرة حالياً.</p>`;
+                        container.innerHTML = `<p class="text-center text-gray-500 dark:text-gray-400 mx-auto">لا توجد مباريات مباشرة حالياً.</p>`;
                         return;
                     }
 
@@ -137,26 +141,26 @@
                         const time = new Date(m.fixture.date).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
 
                         return `
-            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
-                 onclick="playStream('${m.fixture.id}')">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <img src="${home.logo}" alt="${home.name}" class="w-10 h-10 ml-2">
-                  <span class="font-semibold">${home.name}</span>
-                </div>
-                <span class="mx-2">-</span>
-                <div class="flex items-center">
-                  <img src="${away.logo}" alt="${away.name}" class="w-10 h-10 ml-2">
-                  <span class="font-semibold">${away.name}</span>
-                </div>
-              </div>
-              <div class="flex justify-between items-center mt-2">
-                <p class="text-sm text-gray-500 dark:text-gray-300">${league}</p>
-                <span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>
-              </div>
-              <p class="text-sm text-blue-600 dark:text-blue-400 mt-1">${time}</p>
-            </div>
-          `;
+                        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+                            onclick="playStream('${m.fixture.id}')">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                            <img src="${home.logo}" alt="${home.name}" class="w-10 h-10 ml-2">
+                            <span class="font-semibold">${home.name}</span>
+                            </div>
+                            <span class="mx-2">-</span>
+                            <div class="flex items-center">
+                            <img src="${away.logo}" alt="${away.name}" class="w-10 h-10 ml-2">
+                            <span class="font-semibold">${away.name}</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-sm text-gray-500 dark:text-gray-300">${league}</p>
+                            <span class="ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded">مباشر 🔴</span>
+                        </div>
+                        <p class="text-sm text-blue-600 dark:text-blue-400 mt-1">${time}</p>
+                        </div>
+                        `;
                     }).join('');
                 } catch (err) {
                     console.error(err);
