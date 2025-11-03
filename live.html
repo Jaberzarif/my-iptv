@@ -361,9 +361,19 @@
                     { headers: { 'X-Auth-Token': API_TOKEN } }
                 );
 
-                if (!response.ok) throw new Error(`خطأ في API: ${response.status}`);
+                // --- DEBUG LOGGING: clone response and print raw body for troubleshooting ---
+                const rawBody = await response.clone().text();
+                console.log('Football-Data response', { url: response.url, status: response.status, ok: response.ok, rawBody });
 
-                const data = await response.json();
+                if (!response.ok) {
+                    // show server message in UI to help debugging (CORS/401/429/etc)
+                    errorMsg.querySelector('p').textContent = `خطأ في API: ${response.status} — ${rawBody}`;
+                    errorMsg.classList.remove('hidden');
+                    loading.classList.add('hidden');
+                    return;
+                }
+
+                const data = JSON.parse(rawBody || '{}');
                 allMatches = data.matches || [];
 
                 if (!allMatches.length) {
@@ -384,7 +394,6 @@
                 loading.classList.add('hidden');
             }
         }
-
         // Live stream player
         function playStream(matchId) {
             const url = streamMap[matchId];
