@@ -80,15 +80,26 @@
         </div>
     </header>
        <script type="module" src="https://widgets.api-sports.io/3.1.0/widgets.js"></script>
-    <div class="max-w-7xl mx-auto px-4 py-8 flex-grow">
-        <api-sports-widget data-type="games" data-games-style="2" data-refresh="true"
-            data-tab="live"></api-sports-widget>
+        <div class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+                <api-sports-widget data-type="games"
+                data-games-style="2"
+                data-refresh="true"
+                data-tab="all"
+                ></api-sports-widget>
 
-        <!-- Configuration -->
-        <api-sports-widget data-type="config" data-key="b5f36d0b99e00084ff3bfc14ed82bbcd" data-sport="football"
-            data-lang="fr" data-theme="white" data-timezone="Europe" data-show-errors="true"></api-sports-widget>
-     
-    </div>
+                <!-- Configuration -->
+                <api-sports-widget data-type="config"
+                data-key="b5f36d0b99e00084ff3bfc14ed82bbcd"
+                data-sport="football"
+                data-lang="fr"
+                data-theme="white"
+                data-timezone="Europe"
+                data-show-errors="true"
+                data-show-logos="true"
+                data-favorite="true"
+                    ></api-sports-widget>
+        
+        </div>
 
     <!-- JS: Theme Toggle -->
     <script>
