@@ -78,28 +78,31 @@
             <p class="text-center text-gray-600 dark:text-gray-400 mb-6">تابع جميع المباريات المباشرة والقادمة</p>
         </div>
 
-        <!-- API Sports Widget Script -->
-        <script type="module" src="https://widgets.api-sports.io/3.1.0/widgets.js"></script>
 
         <!-- Fixtures Widget -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-                <api-sports-widget data-type="games"
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4" dir="ltr">
+             <!-- Games Widget -->
+            <api-sports-widget
+                data-type="games"
                 data-games-style="2"
-                data-refresh="true"
-                data-tab="all"
-                ></api-sports-widget>
+                data-tab="all">
+            </api-sports-widget>
 
-                <!-- Configuration -->
-                <api-sports-widget data-type="config"
+            <!-- Configuration -->
+            <api-sports-widget
+                data-type="config"
                 data-key="b5f36d0b99e00084ff3bfc14ed82bbcd"
                 data-sport="football"
                 data-lang="en"
-                data-theme="white"
-                data-timezone="Afirca"
+                data-theme="dark"
+                data-timezone="Africa/Tunis"
                 data-show-errors="true"
                 data-show-logos="true"
-                data-favorite="true"
-                ></api-sports-widget>
+                data-favorite="true">
+            </api-sports-widget>
+
+            <!-- Script Loader -->
+            <script src="https://widgets.api-sports.io/2.0.3/widgets.js"></script>
         </div>
     </main>
 
