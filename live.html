@@ -83,28 +83,23 @@
 
         <!-- Fixtures Widget -->
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-            <api-sports-widget 
-                data-type="fixtures"
+                <api-sports-widget data-type="games"
+                data-games-style="2"
                 data-refresh="true"
-                data-date="all"
-                data-league="all"
-                data-team="all"
-                data-live="true"
-                data-columns="time,teams,score,status"
-            ></api-sports-widget>
+                data-tab="all"
+                ></api-sports-widget>
 
-            <!-- Configuration Widget -->
-            <api-sports-widget 
-                data-type="config"
+                <!-- Configuration -->
+                <api-sports-widget data-type="config"
                 data-key="b5f36d0b99e00084ff3bfc14ed82bbcd"
                 data-sport="football"
-                data-lang="fr"
-                data-theme="auto"
-                data-timezone="Africa/Tunis"
+                data-lang="en"
+                data-theme="white"
+                data-timezone="Afirca"
                 data-show-errors="true"
                 data-show-logos="true"
                 data-favorite="true"
-            ></api-sports-widget>
+                ></api-sports-widget>
         </div>
     </main>
 
