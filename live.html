@@ -12,6 +12,8 @@
     <!-- Google Font: Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
+      <script type="module" crossorigin src="https://widgets.api-sports.io/3.1.0/widgets.js"></script>
+
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
@@ -78,33 +80,49 @@
             <p class="text-center text-gray-600 dark:text-gray-400 mb-6">تابع جميع المباريات المباشرة والقادمة</p>
         </div>
 
-
         <!-- Fixtures Widget -->
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4" dir="ltr">
-            <!-- Games Widget -->
-            <api-sports-widget
-                data-type="games"
-                data-games-style="2"
-                data-tab="all">
-            </api-sports-widget>
 
-            <!-- Configuration -->
-            <api-sports-widget
-                data-type="config"
-                data-key="b5f36d0b99e00084ff3bfc14ed82bbcd"
-                data-sport="football"
-                data-lang="en"
-                data-theme="dark"
-                data-timezone="Africa/Tunis"
-                data-show-errors="true"
-                data-show-logos="true"
-                data-favorite="true">
-            </api-sports-widget>
+              <div class="col-5">
+        <div id="games-list" class="card text-bg-dark border-dark">
+          <div class="card-body p-0">
+            <div id="games-list">
+              <api-sports-widget data-type="games" data-games-style="2"></api-sports-widget>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Config widget -->
+    <api-sports-widget 
+        data-type="config" 
+        data-sport="football" 
+        data-key="c9d8356587bf83eb5123483384b483d3" 
+        data-lang="en"
+        data-theme="grey" 
+        data-show-error="false" 
+        data-show-logos="true" 
+        data-refresh="20" 
+        data-favorite="true"
+        data-player-trophies="true" 
+        data-standings="true" 
+        data-player-injuries="true" 
+        data-team-squad="true"
+        data-team-statistics="true" 
+        data-player-statistics="true" 
+        data-tab="games" 
+        data-game-tab="statistics"
+        data-target-player="modal" 
+        data-target-league="#games-list" 
+        data-target-team="#team-content"
+        data-target-game="#game-content .card-body" 
+        data-target-standings="#standings-content"
+    ></api-sports-widget>
+
         </div>
 
-        <!-- Script Loader (must be outside the div) -->
-        <script src="https://widgets.api-sports.io/2.0.3/widgets.js"></script>
     </main>
+
 
     <!-- Footer -->
     <footer class="bg-white dark:bg-gray-900 text-center py-4 text-gray-600 dark:text-gray-300 border-t dark:border-gray-700 mt-8">
